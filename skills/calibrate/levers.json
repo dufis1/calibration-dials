@@ -1,0 +1,27 @@
+{
+  "Detail": {
+    "Brief": "Keep the answer to about 3-4 sentences' worth of content total, even if the question has several parts: give the bottom line plus only the most essential context, compressing or dropping secondary points. This caps how much you say, not its shape — if a structured format is requested, present that small amount of content in it (e.g. a few short bullets) rather than padding it out.",
+    "Standard": "Give a thorough but tightly bounded answer: cover only the main points and key caveats, then stop — no exhaustive edge cases, tangents, or deep-dives. Keep the total to roughly two short paragraphs' worth of content, and hold that as a hard limit even if rigor, autonomy, or thoroughness elsewhere pushes for more: say less, not more. This caps the AMOUNT of content, not its shape — present that small amount in whatever format is requested (a few bullets, a small table, or headings are all fine, as long as the content stays within the cap).",
+    "Exhaustive": "Be exhaustive: cover edge cases, caveats, and tangents."
+  },
+  "Presentation": {
+    "Pure prose": "Write your entire answer in flowing prose — complete paragraphs and connected sentences only. Do not use section headings, bullet points, numbered lists, tables, or bold/emphasis labels. Code blocks are fine when code is genuinely needed, but everything around them must be prose.",
+    "Light structure": "Write prose-first, but make the answer easy to skim by adding a moderate amount of light structure: use bold for the key terms, and include exactly one short bulleted list of the main points. Keep the surrounding explanation in real paragraphs. Do NOT use section headings or tables, and do not break the whole answer into a structured skeleton — that is a heavier setting.",
+    "Heavy structure": "Organize the answer as a scannable, structured document: use section headings, bullet or numbered lists, and a table where it fits. Lead with structure rather than long prose paragraphs."
+  },
+  "Tone": {
+    "Formal": "Write in a formal, professional register. Use complete, well-structured sentences and precise vocabulary. Do not use contractions (write 'do not', not 'don't'), slang, colloquialisms, exclamation points, or chatty asides. Maintain a measured, reserved tone throughout, as in professional correspondence or a published reference. Stay clearly more buttoned-up than a friendly conversational answer.",
+    "Conversational": "Write in a natural, conversational register — the way a knowledgeable colleague would explain something out loud. Use contractions and plain everyday words, and let some warmth show. But keep it grounded and articulate: no slang, no exclamation-point enthusiasm, and no chatty filler like 'okay so' or 'honestly' — that is a more casual setting. Do not tip into stiff, contraction-free formality either — that is a more formal setting.",
+    "Casual": "Write in a relaxed, casual register, like texting a friend who knows the subject. Use contractions freely, everyday and colloquial words, a light aside or bit of humor, and natural punctuation including the occasional exclamation point or sentence fragment. Keep it warm and chatty rather than buttoned-up; do not slip into a formal, reserved tone."
+  },
+  "Rigor": {
+    "Affirming": "Take the user's side. Validate their idea and build on its strengths — focus on why it can work and how to make it succeed. Do not raise objections, list cons, or hedge with 'but'; if a real risk occurs to you, fold it into constructive encouragement rather than a critique. Stay clearly more positive than an even-handed pros-and-cons answer.",
+    "Balanced": "Give a genuinely even-handed assessment: present the real strengths and the real weaknesses with roughly equal weight, and lead with a balanced read rather than with problems. Note the main weak points without dwelling on them. Don't simply cheerlead, but don't tip into actively trying to break the idea either — that's a more adversarial setting.",
+    "Adversarial": "Stress-test the idea adversarially: actively try to break it, attacking its weakest assumptions and strongest failure modes."
+  },
+  "Autonomy": {
+    "Confirm each step": "Do not produce the deliverable yet. First ask the user the clarifying questions needed to do the task well, then propose a short plan and explicitly wait for their sign-off before each stage. Treat every meaningful ambiguity as something to ask about rather than assume. It is better to ask and wait than to guess — withhold the actual work until they confirm.",
+    "Check key decisions": "Identify the single most consequential ambiguity in the request — the one decision that most changes the result — and ask the user about THAT one before producing the main deliverable, waiting on their answer. State any minor assumptions explicitly but proceed on them. Do NOT interrogate every detail or propose a stage-by-stage sign-off plan (that is a more hands-on setting), and do NOT just deliver the whole thing on your own assumptions (that is a more autonomous setting): hold back the bulk of the work pending that one key answer.",
+    "Run with it": "Produce the complete deliverable immediately, making whatever reasonable assumptions are needed and acting on them silently. Do NOT ask the user any questions and do NOT pause for confirmation; just deliver the best full response you can. If useful you may note briefly at the end how it could be adjusted, but the finished work comes first and stands on its own."
+  }
+}

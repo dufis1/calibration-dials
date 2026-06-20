@@ -1,0 +1,14 @@
+{
+  "name": "calibration-dials",
+  "owner": {
+    "name": "jojo",
+    "email": "shapirojojo@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "calibration-dials",
+      "source": "./",
+      "description": "Interaction calibration dials for Claude Code: /calibrate (five validated dials) + /calibrate-studio (author your own). Persists to CLAUDE.md. Graphical widget is desktop-app only; terminal falls back to a native arrow-key picker. Requires python3 (>=3.8)."
+    }
+  ]
+}
