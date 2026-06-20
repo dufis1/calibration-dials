@@ -29,7 +29,7 @@ Pick the dials you care about, apply, and the settings persist in `CLAUDE.md`. R
 From inside Claude Code:
 
 ```
-/plugin marketplace add jojo/calibration-dials
+/plugin marketplace add dufis1/calibration-dials
 /plugin install calibration-dials
 ```
 
