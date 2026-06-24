@@ -10,6 +10,15 @@ so future sessions obey.
 /calibrate
 ```
 
+![The /calibrate dial widget — five segmented dials (Detail, Presentation, Tone, Rigor, Autonomy), each with three notches, above an Apply button.](assets/calibrate-widget.png)
+
+## Demo
+
+<video src="https://github.com/dufis1/calibration-dials/raw/main/assets/calibrate-demo.mp4" controls muted width="100%"></video>
+
+> If the player doesn't load inline (some markdown viewers don't render `<video>`),
+> [watch the demo here](assets/calibrate-demo.mp4).
+
 ## The five dials
 
 Each dial has three notches; leave any dial **unset** to keep Claude's default for that axis.
