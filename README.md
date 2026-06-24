@@ -14,10 +14,7 @@ so future sessions obey.
 
 ## Demo
 
-<video src="https://github.com/dufis1/calibration-dials/raw/main/assets/calibrate-demo.mp4" controls muted width="100%"></video>
-
-> If the player doesn't load inline (some markdown viewers don't render `<video>`),
-> [watch the demo here](assets/calibrate-demo.mp4).
+https://github.com/user-attachments/assets/2e8eecfc-c15e-4571-a936-d2504bcaf733
 
 ## The five dials
 
