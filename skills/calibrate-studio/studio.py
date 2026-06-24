@@ -148,7 +148,7 @@ def cmd_remove(args):
     del reg[name]
     save_registry(args.registry, reg)
     print(f"removed '{name}' from the registry -> {args.registry}")
-    print("(it no longer renders in /calibrate; its directive clears from CLAUDE.md on the next apply)")
+    print("(it no longer renders in /calibrate; its directive clears from the Calibrated output style on the next apply)")
 
 
 # ----- scaffold-eval -------------------------------------------------------

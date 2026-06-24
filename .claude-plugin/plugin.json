@@ -1,7 +1,7 @@
 {
   "name": "calibration-dials",
-  "version": "1.2.0",
-  "description": "Calibrate Claude's interaction style with named-stop dials (Detail, Presentation, Tone, Rigor, Autonomy) that persist across sessions via CLAUDE.md. Includes /calibrate-studio for authoring and validating your own dials. The graphical dial widget is desktop-app only; terminal Claude Code auto-falls back to a native arrow-key picker, so it works on both. Requires python3 (>=3.8).",
+  "version": "1.3.0",
+  "description": "Calibrate Claude's interaction style with named-stop dials (Detail, Presentation, Tone, Rigor, Autonomy) that persist across sessions as a Claude Code output style. Includes /calibrate-studio for authoring and validating your own dials. The graphical dial widget is desktop-app only; terminal Claude Code auto-falls back to a native arrow-key picker, so it works on both. Requires python3 (>=3.8).",
   "author": {
     "name": "jojo",
     "email": "shapirojojo@gmail.com"

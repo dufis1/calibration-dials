@@ -2,8 +2,9 @@
 
 A Claude Code plugin that lets you **tune Claude's interaction style** with simple,
 named-stop dials — and have the setting **stick across every session**. Set how detailed,
-structured, formal, critical, and hands-off Claude should be; the plugin writes the
-matching instructions into your `CLAUDE.md` so future sessions obey.
+structured, formal, critical, and hands-off Claude should be; the plugin saves the
+matching instructions as a Claude Code [**output style**](https://code.claude.com/docs/en/output-styles)
+so future sessions obey.
 
 ```
 /calibrate
@@ -21,8 +22,10 @@ Each dial has three notches; leave any dial **unset** to keep Claude's default f
 | **Rigor** | how critically Claude engages your ideas | Affirming · Balanced · Adversarial |
 | **Autonomy** | who holds the wheel | Confirm each step · Check key decisions · Run with it |
 
-Pick the dials you care about, apply, and the settings persist in `CLAUDE.md`. Re-run
+Pick the dials you care about, apply, and the settings persist as an output style. Re-run
 `/calibrate` anytime to adjust; clearing a dial returns that axis to Claude's default.
+Because an output style is part of the system prompt, a change takes effect after `/clear`
+or in your next session.
 
 ## Install
 
@@ -42,7 +45,7 @@ Then run `/calibrate` in any project.
   number keys — no typing).
 
 The plugin detects the surface automatically and uses the right one. Either way the
-settings persist identically to `CLAUDE.md`.
+settings persist identically as the output style.
 
 ## Custom dials — `/calibrate-studio`
 
@@ -63,6 +66,12 @@ automatically, tagged *custom* (and *unvalidated* until a passing eval promotes 
 
 ## How it works
 
-`/calibrate` writes only the delimited `<!-- dial-settings -->` block in your `CLAUDE.md`
-(project root, or `~/.claude/CLAUDE.md` for global). The rest of the file is left untouched,
-and the directives injected per notch are validated steering instructions, not just labels.
+`/calibrate` saves your selection as a Claude Code **output style** named `Calibrated`
+(`.claude/output-styles/calibrated.md`, or `~/.claude/` for global) and activates it via
+the `outputStyle` setting. Output styles are the purpose-built channel for steering
+Claude's role, tone, and output format — they modify the system prompt — whereas `CLAUDE.md`
+is for project and codebase context. The style ships with `keep-coding-instructions: true`,
+so it changes *how* Claude communicates while leaving its software-engineering behavior
+intact, and the directives injected per notch are validated steering instructions, not just
+labels. Clearing every dial removes the style and deactivates it, without touching any other
+output style or setting you've configured.

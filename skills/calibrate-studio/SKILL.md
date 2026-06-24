@@ -15,7 +15,7 @@ works the same whether installed as a plugin or copied under `~/.claude/skills/`
 `/calibrate`'s `dials.py` reads it from next to itself. So the moment a dial is
 authored it renders in `/calibrate` (tagged **custom**, and **unvalidated** until it
 passes the eval). Trust rule: **never describe an unvalidated dial as validated**, and
-never hand-edit the registry or a `CLAUDE.md` block — go through the scripts.
+never hand-edit the registry or the `Calibrated` output style — go through the scripts.
 
 Read `AUTHORING.md` (next to this file) before drafting any dial — it is the hardening
 checklist you apply and self-check against.
@@ -131,7 +131,7 @@ python3 "${CLAUDE_PLUGIN_ROOT:-$HOME/.claude}/skills/calibrate-studio/studio.py"
 python3 "${CLAUDE_PLUGIN_ROOT:-$HOME/.claude}/skills/calibrate-studio/studio.py" remove <dial-or-slug>
 ```
 After `remove`, the dial stops rendering in `/calibrate`, and its directive clears from
-`CLAUDE.md` on the next `/calibrate` apply.
+the `Calibrated` output style on the next `/calibrate` apply.
 
 ---
 

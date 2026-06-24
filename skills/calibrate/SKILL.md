@@ -1,6 +1,6 @@
 ---
 name: calibrate
-description: Calibrate Claude's interaction style (Claude Code). Use when the user types /calibrate or asks to calibrate Claude's interaction style. Renders five interaction dials and persists the selection to CLAUDE.md so future sessions obey.
+description: Calibrate Claude's interaction style (Claude Code). Use when the user types /calibrate or asks to calibrate Claude's interaction style. Renders five interaction dials and persists the selection as a Claude Code output style so future sessions obey.
 ---
 
 # Calibrate (Claude Code)
@@ -16,6 +16,12 @@ A dial left **unset** uses Claude's default behavior for that axis — the user 
 overrides the dials they care about. Persistence is handled by a deterministic
 script (`dials.py`); you render the widget, run the script, and narrate the result.
 
+The selection is saved as a Claude Code **output style** named `Calibrated` (the
+combined directives live in `output-styles/calibrated.md` and are activated via the
+`outputStyle` setting). Because an output style is part of the system prompt — read
+once at session start — a change **takes effect after `/clear` or a new session**.
+`dials.py` handles all of this; you never touch the files by hand.
+
 Power users can author their **own** dials — and harden them with the same eval loop
 that validated these five — via `/calibrate-studio`. Any custom dials they create render
 in this widget automatically (tagged **custom**, plus **unvalidated** until they pass the
@@ -28,10 +34,10 @@ When invoked:
    ```
    python3 "${CLAUDE_PLUGIN_ROOT:-$HOME/.claude}/skills/calibrate/dials.py" read
    ```
-   (add `--global` if the user keeps settings in `~/.claude/CLAUDE.md`.) It prints a
+   (add `--global` to read the user-level output style in `~/.claude/`.) It prints a
    JSON object of currently-applied dial→notch labels — e.g.
    `{"Detail": "Brief", "Tone": "Casual"}` — or `{}` when nothing is set yet
-   (first-time use).
+   (first-time use, or the user has switched to a different output style).
 
    Then read any **custom dials** the user authored via `/calibrate-studio`:
 
@@ -164,25 +170,26 @@ When invoked:
    picker path **you build the same line** from the answers (step 1). Either way it lists
    **only the dials the user set** — e.g. `Calibrate: Detail = Brief, Tone = Casual` — or `Calibrate: reset — all dials to default` when they cleared everything. Any dial **not listed** is intentionally left at Claude's default. Read the labels **literally** — never translate, infer, or add a notch the user didn't pick.
 
-3. **Persist with the script — do not hand-edit `CLAUDE.md`.** Run:
+3. **Persist with the script — do not hand-edit the output style or settings.** Run:
 
    ```
    python3 "${CLAUDE_PLUGIN_ROOT:-$HOME/.claude}/skills/calibrate/dials.py" apply "<everything after 'Calibrate: '>"
    ```
-   (add `--global` to target `~/.claude/CLAUDE.md`.) Pass the text through verbatim.
-   The script deterministically rewrites **only** the text between
-   `<!-- dial-settings:start -->` and `<!-- dial-settings:end -->`: it injects the
-   validated directive for each **listed** dial (from `levers.json`, the single source
-   of truth), **clears every dial the user did not list**, stores the chosen labels for
-   next time's pre-seed, and leaves the rest of the file untouched. It creates the
-   block/file if absent, removes the block entirely on a full reset, and never
-   duplicates. If the script prints `ERROR`, surface it and stop — nothing was written.
+   (add `--global` to target the user level, `~/.claude/`.) Pass the text through
+   verbatim. The script deterministically (re)writes the `Calibrated` **output style**
+   — `output-styles/calibrated.md` — with the validated directive for each **listed**
+   dial (from `levers.json`, the single source of truth), **omitting every dial the user
+   did not list**, and activates it by setting `outputStyle: "Calibrated"` in the
+   settings file. On a full reset it removes the style file and deactivates it (without
+   disturbing a different output style the user may have set, or any other settings key).
+   If the script prints `ERROR`, surface it and stop — nothing was written.
 
-4. **Report — just confirm what was saved.** Echo the script's one-line result in a
-   single line, e.g. "Saved to ./CLAUDE.md — Detail = Brief, Tone = Casual (other
-   dials left at default)." Do **not** add caveats, confidence notes, reliability
-   percentages, or any commentary about the dials or how they interact. Confirm and
-   stop.
+4. **Report — confirm what was saved, plus the one functional note.** Echo the script's
+   result in a single line, e.g. "Saved as the Calibrated output style — Detail = Brief,
+   Tone = Casual (other dials left at default)." Then add the **one** required line: it
+   takes effect after **`/clear` or a new session** (an output style is part of the
+   system prompt). Do **not** add caveats, confidence notes, reliability percentages, or
+   any commentary about the dials or how they interact. Confirm and stop.
 
 ## Validation provenance
 The directive text in `levers.json` is eval-confirmed per dial — see
